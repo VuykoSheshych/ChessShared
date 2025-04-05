@@ -1,4 +1,5 @@
-
+using System;
+using System.Collections.Generic;
 using ChessShared.Dtos;
 
 namespace ChessShared.Models;

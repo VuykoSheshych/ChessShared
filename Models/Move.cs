@@ -1,3 +1,6 @@
+#nullable enable
+using System;
+
 namespace ChessShared.Models;
 public class Move
 {
