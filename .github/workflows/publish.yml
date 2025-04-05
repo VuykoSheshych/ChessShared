@@ -1,0 +1,30 @@
+name: Publish NuGet to GitHub Packages
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish NuGet Package
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Authenticate with GitHub Packages
+        run: |
+          dotnet nuget add source https://nuget.pkg.github.com/VuykoSheshych/index.json \
+            --name github \
+            --username VuykoSheshych \
+            --password ${{ secrets.NUGET_DEPLOY_GITHUB_TOKEN }} \
+            --store-password-in-clear-text
+
+      - name: Build and publish
+        run: dotnet pack --configuration Release && dotnet nuget push bin/Release/*.nupkg --source github --skip-duplicate
