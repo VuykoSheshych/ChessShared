@@ -26,18 +26,8 @@ jobs:
           --password ${{ secrets.GITHUB_TOKEN }} \
           --store-password-in-clear-text
 
-      - name: Setup GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.14
-        with:
-          versionSpec: "5.x"
-
-      - name: Get Version
-        run: |
-          VERSION=$(gitversion /showvariable SemVer)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
       - name: Build and publish
         run: |
           dotnet build -c Release
-          dotnet pack -c Release /p:Version=$VERSION --output ./nupkg
+          dotnet pack -c Release --output ./nupkg
           dotnet nuget push ./nupkg/*.nupkg --source github --skip-duplicate
