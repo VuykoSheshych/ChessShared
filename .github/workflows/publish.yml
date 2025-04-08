@@ -23,7 +23,7 @@ jobs:
           dotnet nuget update source github \
           --source https://nuget.pkg.github.com/VuykoSheshych/index.json \
           --username VuykoSheshych \
-          --password ${{ secrets.GITHUB_TOKEN }} \
+          --password ${{ secrets.NUGET_DEPLOY_GITHUB_TOKEN }} \
           --store-password-in-clear-text
 
       - name: Build and publish
