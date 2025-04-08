@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.2.2</Version>
+    <Version>0.3.0</Version>
     <Authors>VuykoSheshych</Authors>
     <Description>Shared entities for chess microservices (e.g. UsersAndAuth, BlazorFrontend, GamePlay)</Description>
     <PackageId>Chess.Shared</PackageId>
