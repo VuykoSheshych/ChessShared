@@ -5,7 +5,7 @@ using ChessShared.Dtos;
 namespace ChessShared.Models;
 public class GameSession
 {
-	public string Id { get; set; } = string.Empty;
+	public Guid Id { get; set; } = Guid.NewGuid();
 	public required PlayerInGameDto WhitePlayer { get; set; }
 	public required PlayerInGameDto BlackPlayer { get; set; }
 	public List<Move> Moves { get; set; } = [];
